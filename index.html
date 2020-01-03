@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tony portfolio</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "微軟正黑體";
+            overflow-x:hidden;
+        }
+        .section{
+            position: relative;
+            width: 100vw;
+            height:100vh; 
+        }
+        .section-1{
+            background-image: url(bg.png);
+            background-size:100% 100%;
+        }
+        .section-2{
+            background-image:  url(bg2.png);
+            background-size:100% 100%;
+        }
+        .section-3{
+            background-color: #EBE7CE;
+            height:220vh; 
+        }
+        .section-4{
+            background-color: #ebd091;
+            height:590vh; 
+        }
+        .section-5{
+            background-color: #644323;
+            height:20vh; 
+        }
+        .First-Me.F1{
+            width: 22vw;
+            position: absolute;
+            top:-5%;
+            left:-2%;
+        }
+        .First-Me.F2{
+            width: 15vw;
+            position: absolute;
+            bottom: 0%;
+            left:0%;
+        }
+        .First-Me.F3{
+            width: 20vw;
+            position: absolute;
+            bottom: 0%;
+            right:-2%;
+        }
+        .First-Me.Text{
+            width: 20vw;
+            height: 14vh;
+            position: absolute;
+            top: 43%;
+            left: 40%;
+        }
+        .Second-intro{
+            width: 30vw;
+            color: #644323;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 2;
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            opacity: 0;
+        }
+        .section-2 h1{
+            color: #EBE7CE;
+            position: absolute;
+            top:10%;
+            left: -5%;
+            font-size: 250px;
+        }
+        .section-2 .Second-skill{
+            width: 40vw;
+            height: 65vh;
+            background-color: #CAAC86;
+            position: absolute;
+            right: 0%;
+            opacity: 0;
+            top:30%;
+            box-shadow: -5px 5px 8px 2px rgba(0, 0, 0, 0.2);
+        }
+        .Second-skill>img{
+            position: absolute;
+            filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.5));
+            cursor: pointer;
+        }
+        .Second-skill>h1{
+            writing-mode: vertical-lr ;
+            font-size: 100px;
+            color: #EBE7CE55;
+            letter-spacing: 20px;
+            position: absolute;
+            top:10%;
+            left: 0%;
+        }
+        .skill-lv01{
+            width: 8%;
+        }
+        .skill-lv02{
+            width: 13%;
+        }
+        .skill-lv03{
+            width: 20%;
+        }
+        .skill-lv04{
+            width: 28%;
+        }
+        .Second-skillresult{
+            right: 5%;
+            top:40%;
+            position: absolute;
+            width: 30vw;
+            height: 20vh;
+            opacity: 1;
+            background-color:#EBE7CE;
+            box-shadow: -5px 5px 8px 2px rgba(0, 0, 0, 0.2);
+        }
+        .Second-skillresult>p{
+            color: #644323;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 2;
+            text-align: center;
+            margin-top: 5%;
+        }
+        .Third-Exp{
+            width: 100vw;
+            position: relative;
+        }
+        .Third-Exp.One{
+            height:50vh;
+        }
+        .Third-Exp.Two{
+            height:70vh;
+        }
+        .Third-Exp.Three{
+            height:100vh;
+        }
+        .Third-Exp .Title{
+            color: #644323;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .Third-Exp .Description{
+            color: #555555;
+            font-size: 15px;
+            margin-bottom: 25px;
+            line-height: 2;
+        }
+        .Third-Exp .Description>.mark{
+            background-color: #f6da2c;
+        }
+        .bgText{
+            width:40vw;
+            position: absolute;
+            top:25%;
+        }
+        .One .exp_item{
+            position: absolute;
+            top:30%;
+            right:0%;
+            opacity: 0;
+        }
+        .Two .exp_item{
+            position: absolute;
+            top:15%;
+            left:0%;
+            opacity: 0;
+        }
+        .Three .exp_item{
+            position: absolute;
+            top:0%;
+            right:0%;
+            width: 40vw;
+            opacity: 0;
+        }
+        .One>.bgText{
+            left:10%;
+        }
+        .Two>.bgText{
+            right:10%;
+        }
+        .Three>.bgText{
+            left:15%;
+        }
+        .section-4>h1{
+            writing-mode: vertical-lr ;
+            font-size: 200px;
+            color: #EBE7CE55;
+            letter-spacing: 20px;
+            position: absolute;
+            top:10%;
+            left: 0%;
+        }
+        .project_item{
+            margin-top: 10vh;
+            width: 60vw;
+            height:80vh;
+            margin-left: 20vw;
+            position: relative;
+            opacity: 0;
+        }
+        .project_item>img{
+            height: 70vh;
+            width: 18vw;
+            position: relative;
+            left:5%;
+            top:0%;
+            z-index: 1;
+        }
+        .project_item>.frame{
+            height: 70vh;
+            width: 18vw;
+            box-sizing: border-box;
+            border: 5px solid white;
+            background-color: #000000AA;
+            position: absolute;
+            left:5%;
+            top:0%;
+            opacity: 0;
+            z-index: 2;
+            color: white;
+            font-size: 15px;
+            padding-top: 15%;
+            padding-left: 2%;
+            font-weight: 600;
+            line-height: 2.5;
+        }
+        .project_item>h2{
+            color: #644323;
+            font-weight: 700;
+            font-size: 80px;
+            position: absolute;
+            top:10%;
+            left: 40%;
+        }
+        .project_item>h2>span{
+            background-color: #e22525;
+            color: #ffffff;
+            margin-left: 10px;
+            position: relative;
+            bottom:30px;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .project_item>p{
+            color: #555555;
+            width: 50%;
+            font-weight: 700;
+            line-height: 2;
+            font-size: 15px;
+            position: absolute;
+            top:50%;
+            left: 45%;
+        }
+        .app04>img,.other02>img,.web01>img{
+            width: 35vw;
+            height: 40vh;
+        }
+        .app04>.frame,.other02>.frame,.web01>.frame{
+            width: 35vw;
+            height: 40vh;
+        }
+        iframe{
+            position: relative;
+            left:5%;
+            top:0%;
+            z-index: 1;  
+        }
+        .app01{
+            margin-left:10vw;
+        }
+        .app03{
+            margin-left: 25vw;
+        }
+        .app03>img{
+            left:70%;
+        }
+        .app03>.frame{
+            left:70%;
+        }
+        .app03>h2{
+            left:10%;
+        }
+        .app03>p{
+            left:10%;
+        }
+        .app04{
+            margin-left: 5vw;
+            margin-top: 0vh;
+            width: 80vw;
+            height: 50vh;
+        }
+        .app04>h2{
+            left: 55%;
+            top:0%;
+        }
+        .app04>p{
+            width: 30vw;
+            left:60%;
+            top:50%;
+        }
+        .app05{
+            margin-top: 5vh;
+        }
+        .app05>h2{
+            left:10%;
+        }
+        .app05>p{
+            left:10%;
+        }
+        .app05>img{
+            left:70%;
+        }
+        .app05>.frame{
+            left:70%;
+        }
+        .other01{
+            margin-left: 5vw;
+            margin-top: 0vh;
+            width: 80vw;
+            height: 50vh;
+        }
+        .other01>h2{
+            left: 55%;
+            top:0%;
+        }
+        .other01>p{
+            width: 30vw;
+            left:60%;
+            top:50%;
+        }
+        .other02{
+            margin-left: 5vw;
+            margin-top: 15vh;
+            width: 80vw;
+            height: 50vh;
+        }
+        .other02>img{
+            left:60%; 
+        }
+        .other02>.frame{
+            left:60%; 
+        }
+        .other02>h2{
+            left: 10%;
+            top:0%;
+        }
+        .other02>p{
+            width: 30vw;
+            left:10%;
+            top:50%;
+        }
+        .web01{
+            margin-left: 5vw;
+            margin-top: 15vh;
+            width: 80vw;
+            height: 50vh;
+        }
+        .web01>img{
+            left:10%; 
+        }
+        .web01>.frame{
+            left:10%; 
+        }
+        .web01>h2{
+            left: 60%;
+            top:0%;
+        }
+        .web01>p{
+            width: 30vw;
+            left:60%;
+            top:50%;
+        }
+        .section-5>img{
+            height: 10vh;
+            margin-top: 5vh;
+            margin-left: 2vw;
+        }
+        .section-5 li{
+            display: inline-block;
+            margin-right: 10%;
+            cursor: pointer;
+        }
+        .section-5 li>a{
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .section ul{
+            width: 50vw;
+            position: absolute;
+            top:30%;
+            left:50%;
+        }
+    </style>
+    <script>
+       $(document).ready(function() {
+           var RandomArrayW=[0.1,0.2,0.15,0.4,0.45,0.6,0.65,0.7,0.85,0.9,0.95]
+           var RandomArrayH=[0.2,0.5,0.9,0.1,0.55,0.9,0.2,0.5,0.7,0.1,0.4]
+           var i=0;
+           $(".Second-skill>img").each(function(){
+               $(this).css("top",RandomArrayH[i]*window.innerHeight*0.5);
+               $(this).css("left",RandomArrayW[i]*window.innerWidth*0.35);
+               i++;
+           });
+           $(".Second-skill>img").mouseenter(function(){
+               //btnHover
+               var src=$(this).attr("src");
+               src=src.substring(0,src.length-4);
+               src=src+"_H.png";
+               $(this).attr("src",src);
+               //SaySomeThing
+               $(".Second-skillresult").stop().animate({
+                   top:"20%"
+               },500);
+               if($(this).hasClass("HTML")){
+                   $(".Second-skillresult>p").html("了解HTML5的語意標籤以及網頁切版");
+               }else if($(this).hasClass("CSS")){
+                   $(".Second-skillresult>p").html("了解CSS3基本語法和動畫");
+               }else if($(this).hasClass("arduino")){
+                   $(".Second-skillresult>p").html("可獨自完成具有聲光效果的互動裝置，例如:光立方");
+               }else if($(this).hasClass("C_C++")){
+                   $(".Second-skillresult>p").html("基本程式撰寫能力");
+               }else if($(this).hasClass("drupal")){
+                   $(".Second-skillresult>p").html("基本架站並利用模組開發有功能的網站");
+               }else if($(this).hasClass("Java")){
+                   $(".Second-skillresult>p").html("能夠獨自利用java撰寫android程式");
+               }else if($(this).hasClass("JavaScript")){
+                   $(".Second-skillresult>p").html("了解基本JS陣列物件和ajax，目前正在學習前端框架");
+               }else if($(this).hasClass("MySQL")){
+                   $(".Second-skillresult>p").html("了解基本資料庫規劃和CRUD指令");
+               }else if($(this).hasClass("PhotoShop")){
+                   $(".Second-skillresult>p").html("能夠利用PS完成基本影像處理");
+               }else if($(this).hasClass("PHP")){
+                   $(".Second-skillresult>p").html("能夠利用PHP連結資料庫並與前端交握");
+               }else if($(this).hasClass("unity")){
+                   $(".Second-skillresult>p").html("設計簡單的2D遊戲和結合Vuforia製作AR專題");
+               }else{
+                    $(".Second-skillresult>p").html("");
+               }
+               
+           });
+           $(".Second-skill>img").mouseout(function(){
+               var src=$(this).attr("src");
+               src=src.substring(0,src.length-6);
+               src=src+".png";
+               $(this).attr("src",src);
+                //SaySomeThing
+               $(".Second-skillresult").stop().animate({
+                   top:"40%"
+               },500);
+           });
+           $(".project_item>.frame").mouseenter(function(){
+               $(this).stop().animate({
+                   opacity:1
+               },500)
+           });
+            $(".project_item>.frame").mouseout(function(){
+                $(this).stop().animate({
+                   opacity:0
+               },500)
+           });
+           
+           //滾動動畫
+           $(window).scroll(function() {
+               var section1top=0;
+               var section2top=window.innerHeight/2;
+               var section3top=section2top+window.innerHeight;
+               var section4top=section3top+window.innerHeight*2.2;
+               var section5top=section4top+window.innerHeight*5.9;
+               if($(window).scrollTop()>=section1top&&$(window).scrollTop()<=section2top){
+                   console.log("section1top");
+               }else if($(window).scrollTop()>=section2top&&$(window).scrollTop()<=section3top){
+                   console.log("section2top");
+                   $(".Second-intro").animate({
+                       left: "10%",
+                       opacity: 1
+                   },800);
+                   $(".Second-skill").animate({
+                       right: "5%",
+                       opacity: 1
+                   },800);
+               }else if($(window).scrollTop()>=section3top&&$(window).scrollTop()<=section4top){
+                   console.log("section3top");
+                   $(".One .exp_item").animate({
+                        right: "10%",
+                       opacity: 1
+                   })
+                   $(".Two .exp_item").animate({
+                        left: "18%",
+                       opacity: 1
+                   })
+                   $(".Three .exp_item").animate({
+                        right: "15%",
+                       opacity: 1
+                   })
+               }else if($(window).scrollTop()>=section4top&&$(window).scrollTop()<=section5top){
+                   console.log("section4top");
+                   if($(window).scrollTop()>=section4top&&$(window).scrollTop()<=section4top+window.innerHeight*0.8){
+                       $(".app01").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*0.8&&$(window).scrollTop()<=section4top+window.innerHeight*1.6){
+                       $(".app02").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*1.6&&$(window).scrollTop()<=section4top+window.innerHeight*2.4){
+                       $(".app03").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*2.4&&$(window).scrollTop()<=section4top+window.innerHeight*2.9){
+                       $(".app04").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*2.9&&$(window).scrollTop()<=section4top+window.innerHeight*3.8){
+                       $(".app05").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*3.8&&$(window).scrollTop()<=section4top+window.innerHeight*4.3){
+                       $(".other01").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*3.8&&$(window).scrollTop()<=section4top+window.innerHeight*4.3){
+                       $(".other02").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*4.3&&$(window).scrollTop()<=section4top+window.innerHeight*4.8){
+                       $(".other02").animate({
+                           opacity:1
+                       },500);
+                   }else if($(window).scrollTop()>=section4top+window.innerHeight*4.8&&$(window).scrollTop()<=section5top){
+                       $(".web01").animate({
+                           opacity:1
+                       },500);
+                   }
+               }else if($(window).scrollTop()>=section5top){
+                   console.log("section5top");
+               }
+           });
+        });
+    </script>
+</head>
+<body>
+    <section class="section-1 section">
+    <img src="F1.png" class="First-Me F1">
+    <img src="F2.png" class="First-Me F2">
+    <img src="F3.png" class="First-Me F3">
+    <img src="Tony.png" class="First-Me Text"> 
+    </section>
+    <section class="section-2 section">
+       <h1>唐嘉駿</h1>
+        <p class="Second-intro">您好，我是嘉駿，目前就讀於元智大學資訊傳播學系4年級，大學期間我不斷地探索自己喜歡的事物，接觸過許多程式語言，學習途中都蠻有成就感。然而，在大二時期接觸到前端程式設計，對其產生極大興趣，目前除了努力為這方面的技能打好基礎，我也有再學習互動科技的相關技術，期望能透過人與科技的互動，讓科技產生溫度，也希望能透過資訊的力量，幫助需要幫助的人。</p>
+        <div class="Second-skillresult">
+        <p></p>
+        </div>
+        <div class="Second-skill">
+        <h1>SKILL</h1>
+        <img src="skill/arduino.png" class="skill-lv02 skill-G arduino">
+        <img src="skill/C_C++.png" class="skill-lv02 skill-G C_C++">
+        <img src="skill/CSS.png" class="skill-lv03 skill-R CSS">
+        <img src="skill/drupal.png" class="skill-lv02 skill-R drupal">
+        <img src="skill/HTML.png" class="skill-lv04 skill-R HTML">
+        <img src="skill/Java.png" class="skill-lv03 skill-G Java">
+        <img src="skill/JavaScript.png" class="skill-lv03 skill-R JavaScript">
+        <img src="skill/MySQL.png" class="skill-lv02 skill-G MySQL">
+        <img src="skill/PhotoShop.png" class="skill-lv02 skill-Y PhotoShop">
+        <img src="skill/PHP.png" class="skill-lv02 skill-G PHP">
+        <img src="skill/unity.png" class="skill-lv01 skill-G unity">
+        </div>
+    </section>
+    <section class="section-3 section">
+        <div class="Third-Exp One">
+            <img src="2017.png" class="bgText">
+            <div class="exp_item">
+            <p class="Title">參加實踐大學資訊科技與管理學系舉辦之【第八屆校際軟體程式設計競賽基礎組】</p>
+            <p class="Description">在大一期間參加基礎程式設計比賽</p>
+            <p class="Title">參加教育部資通訊軟體創新人才推升計畫【大學聯合新生盃程式設計競賽】</p>
+            <p class="Description">在大一期間參加ITSA&amp;PTC線上程式設計競賽表現優異</p>
+            </div>
+        </div>
+        <div class="Third-Exp Two">
+            <img src="2018.png" class="bgText">
+            <div class="exp_item">
+            <p class="Title">擔任大學系上隔宿露營營隊副召</p>
+            <p class="Description">在大二期間擔任系上兩天一夜活動副召，負責與廠商接洽贊助事宜，活動統籌，場地規劃</p>
+            <p class="Title">參加2018年全國慈善/科技/人文網頁設計比賽暨行動APP創作比賽</p>
+                <p class="Description">在暑假與系上伙伴(5人)共同開發Mochi App獲得<span class="mark">銀獎</span><br/>負責前端程式與後端程式撰寫</p>
+            <p class="Title">參加教育部107年教育志工全國培訓研習營</p>
+            <p class="Description">除了更深入了解資訊志工，更加學習到如何透過資訊的力量有效幫助需要幫助的人</p>
+            <p class="Title">協助「蓽華補習班」維護官網</p>
+            <p class="Description">蓽華補習班是利用WordPress架設的網站，目前正在幫此公司維護及更新網站內容</p>
+            </div>
+        </div>
+        <div class="Third-Exp Three">
+            <img src="2019.png" class="bgText">
+            <div class="exp_item">
+            <p class="Title">參與「網絡行動科技」實習計畫</p>
+            <p class="Description">在網絡科技股份有限公司擔任實習生，學習利用drupal開發網站以及網頁前端的知識</p>
+            <p class="Title">參加ICSS2019國際研討會</p>
+                <p class="Description">在大三期間發表一篇小論文，標題為「A 360 Degrees First Person Perspective Image Generating Method by Several Cameras around Target Person」</p>
+            <p class="Title">參加第二屆元智大學創意APP競賽</p>
+                 <p class="Description">與系上伙伴(6人)共同開發「好客來相報」APP獲得<span class="mark">第一名</span><br/>負責前端程式與後端程式撰寫</p>
+            <p class="Title">參加由adobe舉辦的ADAA競賽</p>
+                 <p class="Description">與系上夥伴(6人)共同製作連動裝置並在影片類獲得<span class="mark">Top Talent</span><br/>是台灣唯二在影片類獲得優選的作品之一</p>
+            <p class="Title">參加「藝次元互動科技」實習計畫</p>
+            <p class="Description">在藝次元互動科技股份有限公司擔任暑期實習生，學習利用ASP.NET開發網頁互動遊戲</p>
+            <p class="Title">擔任大學系上畢業展覽總召</p>
+            <p class="Description">在大四期間擔任畢業展覽總召，負責處理行政事務，進度控管</p>
+            </div>
+        </div>
+    </section>
+    <section class="section-4 section">
+        <h1>Projects</h1>
+        <div class="project_item app01" >
+            
+            <div class="frame">
+                web app<br/>
+                前端:HTML/CSS/jQuery/jQuery mobile<br/>
+                後端:PHP/MySQL<br/>
+                利用cordova打包成apk
+            </div>
+            <img src="work/APP2.png">
+            <h2>MOCHI<span>得獎作品</span></h2>
+            <p>我們的作品名稱為「MOCHI」，直翻中文就是「麻吉」，好朋友的意思，我們希望藉由這個APP，大家能與自己的好麻吉一起同樂，一起分享生活樂趣，也或者是再更進一步透過APP，結交到好麻吉。</p>
+        </div>
+        <div class="project_item app02" >
+            
+            <div class="frame">
+                web app<br/>
+                前端:HTML/CSS/jQuery/jQuery mobile<br/>
+                後端:PHP/MySQL/Python<br/>
+                利用cordova打包成apk
+            </div>
+            <img src="work/APP3.jpg">
+            <h2>好課來相報<span>得獎作品</span></h2>
+            <p>我們發現，每當學校到了選課的季節，大家都會上網尋找課程的評價，但是社群平台眾多，有FB、Dcard、PTT，當大家都在不同平台發表評論時，往往很難整合大家的想法。為了解決這個問題，我們開發一個專門為評論課程所設計的平台，透過雷達圖分析以及個人意見必定能客觀的分析此課程，除此之外，我們還連結學校帳戶系統，同學不必再創建帳號，也不必擔心校外人士刻意洗評論，成為一個真正給元智的APP。</p>
+        </div>
+        <div class="project_item app03" >
+            
+            <div class="frame">
+                前端:使用Android Studio撰寫java<br/>
+                後端:google firebase的Realtime database<br/>
+            </div>
+            <img src="work/APP4.jpg">
+            <h2>點名系統</h2>
+            <p>此作品是我幫一個私營教室製作的點名系統，不同於前兩個作品，此作品的UIUX到程式是我一手包辦，功能除了記錄學生是否有來上課，此APP還可以管理學員、教室、組別，除此之外，我們也有權限控管的機制，一般的使用者與最高權限者能操作的功能大不相同，以此管理此APP。</p>
+        </div>
+         <div class="project_item app04" >
+            
+            <div class="frame">
+                前端:使用Android Studio撰寫java<br/>
+            </div>
+            <img src="work/APP5.jpg">
+            <h2>農藥檢測系統</h2>
+            <p>此作品是與化學系老師合作的APP，主要功能為利用APP透過相機觀看蔬菜的變化，進而分析蔬菜裡是否含有農藥。</p>
+        </div>
+        <div class="project_item app05" >
+            
+            <div class="frame">
+                使用Android Studio撰寫java<br/>
+            </div>
+            <img src="work/APP1.png">
+            <h2>TREE</h2>
+            <p>我的第一個APP作品，創作此APP主要是希望人們可以多走路，我們發現現在的人多是每天做在電腦桌前，並不會每天運動，於是，透過此APP，我們可以將走路的步數換成遊戲內的金錢，並花費虛擬幣來茁壯遊戲內的小樹，每次種出來的結果也都不相同，是個相當有趣且結合運動的APP</p>
+        </div>
+         <div class="project_item other01" >
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xQ9s9XAAEck" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h2>六個囝仔<span>得獎作品</span></h2>
+            <p>這是一個連動裝置的作品，雖然沒有用到科技面的技術，但我們透過動物的元素以及鮮豔的色彩來營造出馬戲團的感覺，並且表達出分工合作的概念。</p>
+        </div>
+        <div class="project_item other02" >
+            
+            <div class="frame">
+                arduino<br/>
+            </div>
+            <img src="work/other1.png">
+            <h2>命運輪盤</h2>
+            <p>主要是製作一個賭輪盤，裝置本身是利用arduino加上馬達模組所控制。本作品的特色在於互動的流暢性，當初在製作此作品的時候，我們反覆測試了許多種操作流程以及每個流程中的停頓秒數，以便使用者在互動時能有最好的使用者體驗。</p>
+        </div>
+        <div class="project_item web01" >
+            <div class="frame">
+                HTML/CSS/JavaScript<br/>
+            </div>
+            <img src="work/web1.png">
+            <h2>卡牌戰國</h2>
+            <p>大三時期的作品，主要是想磨練javascript的技巧再加上課程需求才會產生出此作品，這是一個網頁互動遊戲，目前僅能與電腦方進行戰鬥，每張卡牌都有特殊技能，而卡牌部份採用JSON檔作為資料庫，互動方面則是利用javascript撰寫，動畫方面都是由css呈現</p>
+        </div>
+    </section>
+    <section class="section-5 section">
+        <img src="end.png">
+        <ul>
+            <li><a href="https://www.facebook.com/tang.k.ya" target="view_window">Facebook</a></li>
+            <li><a href="https://www.instagram.com/tony_870111/" target="view_window">Instagram</a></li>
+            <li><a href="mailto:tony11tony11t@gmail.com" target="view_window">Email</a></li>
+        </ul>
+    </section>
+   
+</body>
+</html>
