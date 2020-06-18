@@ -66,6 +66,25 @@
         .me03{
             opacity: 0;
         }
+        .tips{
+            position: absolute;
+            bottom: 0;
+            right:0;
+            width: 200px;
+            animation-name:shine;
+            animation-iteration-count: infinite;
+            animation-duration: 0.6s;
+            animation-direction: alternate-reverse;
+                
+        }
+        @keyframes shine{
+            from{
+                opacity: 1;
+            }
+            to{
+                opacity: 0;
+            }
+        }
         #exp-screen{
             opacity: 0;
             background-color: #c6d6aa;
@@ -281,7 +300,7 @@
         }
         .text{
             display: inline-block;
-            width: 25%;
+            width: 35%;
             height: 100%;
         }
         .text>h1{
@@ -324,6 +343,7 @@
             <h2>唐嘉駿(Jia-Jun Tang)</h2><br />
             <p>您好，我是嘉駿，今年畢業於元智大學資訊傳播學系。大學期間我不斷地探索自己喜歡的事物，接觸過許多程式語言，學習途中都蠻有成就感。然而，在大二時期接觸到前端程式設計，除了透過網頁呈現資料外，也喜歡利用程式產生一些有趣的視覺效果，大三期間擔任過RWD實習生，除此之外，目前也有自己接一些網頁的案子。目前除了努力為這方面的技能打好基礎，我也有學習互動科技的相關技術，期望能透過人與科技的互動，帶給使用者不一樣的體驗和想法 ，如同我的畢製專題-阿那納斯，透過互動裝置和霧幕投影表現出世人對宗教的盲從，也希望透過此方式，可以幫助到需要幫助的人。</p>
         </div>
+        <img src="img/tips.png" class="tips">
     </div>
     <div id="exp-screen" class="screen">
         <div class="exp_me_1">
@@ -475,6 +495,7 @@
                     var First = $(".word_me>h1,.word_me>h3");
                     var Second = $(".word_me>h2,.word_me>p");
                     var me01_H = $(".me01").height() * 1.2;
+                    $(".tips").css("display","block");
                     if (Second.css("opacity") == 1) {
                         First.css("display", "block");
                         First.animate({
@@ -493,6 +514,7 @@
                     var First = $(".word_me>h1,.word_me>h3");
                     var Second = $(".word_me>h2,.word_me>p");
                     var me01_H = $(".me01").height() * 1.2;
+                    $(".tips").css("display","none");
                     if (First.css("opacity") == 1) {
                         Second.css("display", "block");
                         Second.animate({
