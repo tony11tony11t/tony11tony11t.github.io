@@ -1,86 +1,24 @@
 import React, { Component } from 'react'
 import styled , {keyframes} from 'styled-components'
 import theme from '../../../theme/theme'
+import data from '../../../data.json'
 
 export default class Skill extends Component {
 
-    tempLeft = null;
-
     state = {
         offsetX : 0,
-        offsetY : 0,
-        percent : 0
+        offsetY : 0
     }
-
-    skill = [{
-        label : "React-native",
-        level : 1,
-        left : 45
-    },{
-        label : "photoshop",
-        level : 2,
-        left : 14
-    },{
-        label : "Sass",
-        level : 1,
-        left : 84
-    },{
-        label : "arduino",
-        level : 3,
-        left : 54
-    },{
-        label : "css",
-        level : 1,
-        left : 10
-    },{
-        label : "HTML",
-        level : 1,
-        left : 31
-    },{
-        label : "React",
-        level : 1,
-        left : 76
-    },{
-        label : "PHP",
-        level : 2,
-        left : 13
-    },{
-        label : "JavaScript",
-        level : 1,
-        left : 48
-    },{
-        label : "adobe xd",
-        level : 2,
-        left : 90
-    },{
-        label : "android",
-        level : 3,
-        left : 27
-    },{
-        label : "wordpress",
-        level : 2,
-        left : 62
-    },{
-        label : "mySQL",
-        level : 3,
-        left : 8
-    }]
 
 
     createSkill = (info , index) => {
         let {offsetX , offsetY} = this.state;
 
-        let top = (index + 1) / this.skill.length * 90 + (offsetY * (4 - info.level) * 0.3);
+        let top = (index + 1) / data.skill.length * 90 + (offsetY * (4 - info.level) * 0.3);
         let left = info.left + (offsetX * (4 - info.level) * 0.3)
-
-        let changePercent = (level = 4) => {
-            this.setState({percent : (4 - level) * 30});
-        }
 
         return  <SkillItem  className       = {`level${info.level}`} 
                             style           = {{top : `${top}%` , left : `${left}%`}} 
-                            onMouseEnter    = {changePercent.bind(this , info.level)}
-                            onMouseLeave    = {changePercent.bind(this , 4)}
                             percent         = {(4 - info.level) * 30}>
                     {info.label}
                 </SkillItem>
@@ -109,7 +47,7 @@ export default class Skill extends Component {
                     <p>未來目標是繼續研讀更底層的演算法和資料結構和一些主流的開發模式等，加深自己的基本功。</p>
                 </BgTitle>
                 <SkillContainer onMouseMove = {this.MouseMoveHandler}>
-                    {this.skill.map((info , i) => this.createSkill(info , i))}
+                    {data.skill.map((info , i) => this.createSkill(info , i))}
                 </SkillContainer>
             </Main>
         )
@@ -131,7 +69,7 @@ const BgTitle = styled.div`
     position :relative;
     
     h1{
-        font-size : ${_ => `${20 + window.innerWidth *0.06}px`};
+        font-size : ${_ => `${15 + window.innerWidth *0.06}px`};
         margin : 0;
         opacity : 0.3;
         z-index: 10;
@@ -142,6 +80,7 @@ const BgTitle = styled.div`
         background-size: 100% 165%;
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
+        background-clip: text;
         transition : all 1s;
     }
     h2{
@@ -155,14 +94,12 @@ const BgTitle = styled.div`
     p{
         color : ${({theme}) => theme.colors.white};
         opacity : 0.7;
-        font-size : 1rem;
+        font-size : .8rem;
         margin-top: 0;
         margin-bottom : 1.5rem;
-        line-height : 1.8rem
+        line-height : 1.5rem
     }
 `
-
-
 
 const SkillContainer = styled.div`
     height: 100%;

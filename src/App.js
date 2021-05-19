@@ -10,10 +10,21 @@ import Blogs from './components/Section/Blogs'
 
 export default class App extends Component {
 
-  state = {
-    width : window.innerWidth,
-    height : window.innerHeight
-  }
+    constructor(props) {
+        super(props);
+
+        this.AboutRef = React.createRef();
+        this.SkillRef = React.createRef();
+        this.ExpRef   = React.createRef();
+        this.WorksRef = React.createRef();
+        this.BlogsRef = React.createRef();
+    }
+
+    state = {
+        width : window.innerWidth,
+        height : window.innerHeight
+    }
+  
 
   reSize = () => {
     this.setState({
@@ -29,23 +40,23 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar refArray = {[this.AboutRef , this.SkillRef , this.ExpRef , this.WorksRef , this.BlogsRef]}/>
         <SectionWrapper>
             <Index />
         </SectionWrapper>
-        <SectionWrapper bg="about" mask={true}>
+        <SectionWrapper bg="about" mask={true}  ref = {this.AboutRef}>
             <About />
         </SectionWrapper>
-        <SectionWrapper scale = {1}>
+        <SectionWrapper ref = {this.SkillRef}>
             <Skill />
         </SectionWrapper>
-        <SectionWrapper bg="exp" scale = {"fit"} mask={true}>
+        <SectionWrapper bg="exp" scale = {"fit"} mask = {true} ref = {this.ExpRef}>
             <Exp />
         </SectionWrapper>
-        <SectionWrapper scale = {"fit"}>
+        <SectionWrapper ref = {this.WorksRef}>
             <Works />
         </SectionWrapper>
-        <SectionWrapper scale = {"fit"} mask={true}>
+        <SectionWrapper mask = {true} ref = {this.BlogsRef}>
             <Blogs />
         </SectionWrapper>
       </> 

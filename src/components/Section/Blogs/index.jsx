@@ -22,7 +22,7 @@ export default class Blogs extends Component {
     render() {
         return (
             <Main>
-                <h1>Blogs</h1>
+                <h1>BLOGS</h1>
                 <WorksWrapper>
                     {this.works.map(info => {
                         return (<Container>
@@ -46,7 +46,7 @@ const Main = styled.div`
     h1{
         text-align :center;
         color : ${({theme}) => theme.colors.main};
-        padding: 1rem 0;
+        padding: 2rem 0;
         margin : 0;
         
 

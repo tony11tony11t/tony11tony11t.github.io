@@ -1,32 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import data from '../../../data.json'
 
 export default class Works extends Component {
-    works = [{
-        src : `${process.env.PUBLIC_URL}/asset/work_1.png`,
-        content : ""
-    },{
-        src : `${process.env.PUBLIC_URL}/asset/work_2.png`,
-        content : ""
-    },{
-        src : `${process.env.PUBLIC_URL}/asset/work_3.png`,
-        content : ""
-    },{
-        src : `${process.env.PUBLIC_URL}/asset/work_4.png`,
-        content : ""
-    },{
-        src : `${process.env.PUBLIC_URL}/asset/work_5.png`,
-        content : ""
-    },{
-        src : `${process.env.PUBLIC_URL}/asset/work_6.png`,
-        content : ""
-    }]
+
     render() {
         return (
             <Main>
-                <h1>Works</h1>
+                <h1>WORKS</h1>
                 <WorksWrapper>
-                    {this.works.map(info => {
+                    {data.works.map(info => {
                         return (<ImageContainer>
                                     <img src={info.src} />
                                 </ImageContainer>)
@@ -46,7 +29,7 @@ const Main = styled.div`
     h1{
         text-align :center;
         color : ${({theme}) => theme.colors.main};
-        padding: 1rem 0;
+        padding: 2rem 0;
         margin : 0;
         
 

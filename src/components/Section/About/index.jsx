@@ -67,10 +67,10 @@ const Content = styled.div`
 
     p{
         color : ${({theme}) => theme.colors.white};
-        font-size : 1rem;
+        font-size : .8rem;
         width : 70%;
         min-width:15rem;
         margin : auto;
-        line-height: 2rem;
+        line-height: 1.8rem;
     }
 `;
